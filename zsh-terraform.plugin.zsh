@@ -71,6 +71,10 @@ _zsh_terraform_download_install() {
         # if on Darwin, set $OSTYPE to match the release
         [[ "$OSTYPE" == "darwin"* ]] && local OSTYPE=macos
         ;;
+      arm64)
+        machine=arm64
+        # if on Darwin, set $OSTYPE to match the release
+        [[ "$OSTYPE" == "darwin"* ]] && local OSTYPE=macos
       *)
         _zsh_terraform_log $BOLD "red" "Machine $(uname -m) not supported by this plugin"
         return 1
