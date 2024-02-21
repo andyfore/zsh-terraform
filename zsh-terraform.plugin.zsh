@@ -84,7 +84,7 @@ _zsh_terraform_download_install() {
    _zsh_terraform_log $NONE "blue" "  -> Download and install ${toolName} ${version}"
    case ${toolName} in
     tfdocs)
-      curl -vo "${destDir}/tmp.tar.gz" -fsSL https://github.com/${TF_DOCS_RELEASE}/download/${version}/terraform-docs-${version}-${OSTYPE%-*}-${machine}.tar.gz || (_zsh_terraform_log $BOLD "red" "Error while downloading terraform-docs release" ; return)
+      curl -vvv -o "${destDir}/tmp.tar.gz" -fsSL https://github.com/${TF_DOCS_RELEASE}/download/${version}/terraform-docs-${version}-${OSTYPE%-*}-${machine}.tar.gz || (_zsh_terraform_log $BOLD "red" "Error while downloading terraform-docs release" ; return)
       tar xzf ${destDir}/tmp.tar.gz -C ${destDir} 2>&1 > /dev/null
       rm -rf ${destDir}/*.tar.gz
       echo ${version} > ${ZSH_TF_DOCS_VERSION_FILE}
